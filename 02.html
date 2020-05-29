@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+<body>
+    <div id="app" class="container mt-5">
+        <h4>Si se desean agregar clases con Vue es con :class y si se desea añadir más de una es con array [class1,...,classN]</h4>
+        <div :class="['p-3','text-white',fondo]">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Unde dignissimos ipsum itaque. Iusto reprehenderit incidunt tempora, 
+                voluptatum rem maiores nam molestiae nemo quidem iure non, sapiente 
+                vero aspernatur modi eos.
+
+            </p>
+        </div>
+        <h4>Se pueden añadir clases de forma dinámica obteniendo el valor directo de in input vinculando el valor declarado en la "data" con un v-model</h4>
+        <input type="text" class="form-control my-3" v-model="fondo">
+
+        <h4>Se pueden poner condicionales a las clases para poner uno u otro, según la condicional</h4>
+        <div class="p-3 text-white" :class="{'bg-info':color, 'bg-success':!color}">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Unde dignissimos ipsum itaque. Iusto reprehenderit incidunt tempora, 
+                voluptatum rem maiores nam molestiae nemo quidem iure non, sapiente 
+                vero aspernatur modi eos.
+
+            </p>
+        </div>
+        <button class="btn btn-primary" @click="color = !color"> Cambiar</button>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./Js/02.js"></script>
+    
+</body>
+</html>

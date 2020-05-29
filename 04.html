@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Materialize CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Gestor de tareas</title>
+  </head>
+  <body>
+    <div class="container mt-5" id="app">
+      <h3>
+        {{titulo}}
+      </h3>
+      <input type="text" class="form-control my-3" id="" v-model="nuevaTarea" v-on:keyup.enter="agregarTarea">
+      <button class="btn btn-primary" @click="agregarTarea">Agregar</button>
+
+      <div class="mt-3" v-for="(element, index) of tareas">
+        <div role="alert" :class="['alert', element.estado ? 'alert-success': 'alert-danger']">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              {{index+1}} - {{element.nombre}} - {{element.estado}}
+            </div>
+            <div class="">
+              <button class="btn btn-success" @click="editarTarea(index)">
+                <i class="material-icons">
+                  done
+                </i>
+              </button>
+              <button class="btn btn-danger" @click="eliminarTarea(index)">
+                <i class="material-icons">
+                  delete
+                </i>
+              </button>
+
+            </div>            
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./Js/04.js"></script>
+  </body>
+</html>

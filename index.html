@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    
+</head>
+<body>
+    <div id="app">
+        <h1>{{titulo}}</h1>
+        <h3>{{ejemplos.ejemplo1}}</h3>
+        <ul>
+            <li v-for = "fruta of frutas">{{fruta}}</li>
+        </ul>
+        <h3>{{ejemplos.ejemplo2}}</h3>
+        <ul>
+            <li v-for = "coche of coches" >{{coche.Modelo}}, {{coche.Anio}}</li>
+        </ul>
+        <h3>{{ejemplos.ejemplo3}}</h3>
+        <ul>
+            <li v-for = "coche of coches" v-if="coche.Anio === '2016'">{{coche.Modelo}}, {{coche.Anio}}</li>
+        </ul>
+        <ul>
+            <li v-for = "fruta of newFrutas">{{fruta.nombre}}, {{fruta.cantidad}}</li>
+        </ul>
+        <p>Se pueden añadir los valores de data a inputs y modificarlos en tiempo real, pero sin alterar el JS</p>
+        <ul>
+            <li v-for = "fruta of newFrutas">
+                {{fruta.nombre}}
+                <input type="number" v-model.number="fruta.cantidad">--
+                <span v-if="fruta.cantidad === 0">Sin stock</span>              
+            </li>
+        </ul>
+        <p>Se puede operar el javascript desde las propiedades de Vue como si fuera JS Puro. 
+            Por ejemplo, sumar uno con el @click </p>
+            <p>se modifican los elementos si hay modificaciones</p>
+            <ul>
+                <li v-for = "fruta of newFrutas">
+                    {{fruta.nombre}}, {{fruta.cantidad}}
+                    <button @click="fruta.cantidad++">+</button>
+                </li>
+            </ul>
+
+        <h3>{{ejemplos.ejemplo4}}</h3>
+
+        <button v-on:click="clickedElement">Click forma 1</button>
+        <button @click="clickedElement">Click forma 2</button>
+
+        <h3>{{ejemplos.ejemplo5}}</h3>
+        <p>Se modifica el DOM creando nuevos nodos, pero no se almacenan los elementos</p>
+        <p>se puede capturar la pulsación de teclas para llamadas de función mediante @keyup."tecla"</p>
+        <button @click="agregarFruta">Agregar</button><br>
+
+        <input type="text" v-model="newElements" @keyup.enter="agregarFruta"><br>
+
+        <input type="number" v-model="newCantidad">
+
+        <p>Ejemplo de cumputed para realizar operaciones</p>
+        <h4>Total: {{sumarFruta}}</h4>
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./Js/scripts.js"></script>
+    
+</body>
+</html>
