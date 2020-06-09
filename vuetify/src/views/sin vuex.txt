@@ -1,0 +1,56 @@
+data: ()=> ({
+        listaTareas:[
+            {id:1,titulo:'TituloTarea 1', descripcion:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit optio modi saepe amet, consequuntur doloribus. Porro officia earum, animi facilis accusantium fugit maxime accusamus magni ipsam velit. Ipsam, fuga iusto. 1'},
+            {id:2,titulo:'TituloTarea 2', descripcion:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit optio modi saepe amet, consequuntur doloribus. Porro officia earum, animi facilis accusantium fugit maxime accusamus magni ipsam velit. Ipsam, fuga iusto. 2'}
+        ],
+        titulo: '',
+        descripcion: '',
+        snackbar: false,
+        snakBarText: '',
+        timeout: 2000,
+        formularioAdd: true,
+        indexTarea: '',
+    }),
+    methods: {
+        agregarTarea(){
+            if(this.titulo === '' || this.descripcion === ''){
+                this.snackbar = true;
+                this.snakBarText = 'Llene todos los campos';
+
+            }
+            else{
+                this.listaTareas.push({
+                    id: Date.now(),
+                    titulo: this.titulo,
+                    descripcion: this.descripcion,
+
+                });
+                this.titulo = '';
+                this.descripcion = '';
+                this.snakBarText = 'Tarea agregada';
+                this.snackbar = true;
+            }
+
+        },
+        eliminarTarea(id){
+            this.listaTareas = this.listaTareas.filter(e => e.id != id);
+            this.snakBarText = 'Tarea eliminada';
+            this.snackbar = true;
+        },
+        editarTarea(index){
+            this.formularioAdd = false;
+            this.titulo = this.listaTareas[index].titulo;
+            this.descripcion = this.listaTareas[index].descripcion;
+            this.indexTarea = index;
+        },
+        guardarEdicion(index){
+            this.listaTareas[index].titulo = this.titulo;
+            this.listaTareas[index].descripcion = this.descripcion;
+            this.titulo = '';
+            this.descripcion = '';
+            this.indexTarea = '';
+            this.formularioAdd = true;
+            this.snakBarText = 'Tarea Editada';
+            this.snackbar = true;
+        }
+    },
